@@ -7,13 +7,10 @@ public class calculator {
 	public static void main(String[] args) {
 
 		double result = 0;
-
 		Scanner sc = new Scanner(System.in);
-
 		boolean keep_running = true;
 
 		while(keep_running) {
-
 
 			System.out.println("Enter a Number: ");
 			double num1 = sc.nextDouble();
@@ -23,12 +20,21 @@ public class calculator {
 
 			System.out.println("You have entered " + num1 + " and " + num2);
 
-			System.out.println("Enter Operation (+, -, *, /):");
-			char operation  = sc.next().charAt(0);
+			char operation = ' ';
+			boolean validOperator = false;
 
+			while (!validOperator) {
 
+				System.out.println("Enter Operation (+, -, *, /):");
+				operation  = sc.next().charAt(0);
 
+				if (operation == '+' || operation == '-' || operation == '*' || operation == '/') {
+					validOperator = true;
+				} else {
+					System.out.println("Invalid operator! Please enter +, -, *, or /");
+				}
 
+			}
 
 			switch (operation) {
 			case '+':
@@ -44,8 +50,6 @@ public class calculator {
 				result = division(num1, num2);
 				break;
 
-			default:
-				break;
 			}
 
 			System.out.println("Result is: "+result);
